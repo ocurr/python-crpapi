@@ -12,7 +12,7 @@ __version__ = "0.1.0"
 __copyright__ = "Copyright (c) 2009 Sunlight Labs"
 __license__ = "BSD"
 
-import urllib, urllib2
+import urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse
 try:
     import json
 except ImportError:
@@ -38,7 +38,7 @@ class CRP(object):
             raise CRPApiError('Missing CRP apikey')
 
         url = 'http://api.opensecrets.org/?method=%s&output=json&apikey=%s&%s' % \
-              (func, CRP.apikey, urllib.urlencode(params))
+              (func, CRP.apikey, urllib.parse.urlencode(params))
         
         try:
             response = urllib4.urlopen(url).read()
