@@ -12,7 +12,7 @@ __version__ = "0.1.0"
 __copyright__ = "Copyright (c) 2009 Sunlight Labs"
 __license__ = "BSD"
 
-import urllib, urllib2
+import urllib, urllib4
 try:
     import json
 except ImportError:
@@ -41,9 +41,9 @@ class CRP(object):
               (func, CRP.apikey, urllib.urlencode(params))
         
         try:
-            response = urllib2.urlopen(url).read()
+            response = urllib4.urlopen(url).read()
             return json.loads(response)['response']
-        except urllib2.HTTPError as e:
+        except urllib4.HTTPError as e:
             raise CRPApiError(e.read())
         except (ValueError, KeyError) as e:
             raise CRPApiError('Invalid Response')
