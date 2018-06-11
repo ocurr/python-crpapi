@@ -41,9 +41,9 @@ class CRP(object):
               (func, CRP.apikey, urllib.parse.urlencode(params))
         
         try:
-            response = urllib4.urlopen(url).read()
+            response = urllib.request.urlopen(url).read()
             return json.loads(response)['response']
-        except urllib4.HTTPError as e:
+        except urllib.request.HTTPError as e:
             raise CRPApiError(e.read())
         except (ValueError, KeyError) as e:
             raise CRPApiError('Invalid Response')
