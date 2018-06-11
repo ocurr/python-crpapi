@@ -12,7 +12,7 @@ __version__ = "0.1.0"
 __copyright__ = "Copyright (c) 2009 Sunlight Labs"
 __license__ = "BSD"
 
-import urllib, urllib4
+import urllib, urllib2
 try:
     import json
 except ImportError:
