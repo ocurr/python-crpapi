@@ -43,9 +43,9 @@ class CRP(object):
         try:
             response = urllib2.urlopen(url).read()
             return json.loads(response)['response']
-        except urllib2.HTTPError, e:
+        except urllib2.HTTPError as e:
             raise CRPApiError(e.read())
-        except (ValueError, KeyError), e:
+        except (ValueError, KeyError) as e:
             raise CRPApiError('Invalid Response')
 
     class getLegislators(object):
